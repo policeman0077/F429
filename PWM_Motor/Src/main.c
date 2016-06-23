@@ -37,7 +37,7 @@
 
 TIM_HandleTypeDef htim4;
 
-int pwm =0;
+
 int main(void)
 {
 
@@ -46,30 +46,15 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-  init_motor(htim4);
+  init_motor(&htim4);
   
   while (1)
   {
-  /* USER CODE END WHILE */
-        for(pwm=0;pwm<=3749;pwm++)
-		 {
-		 
-		  __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_2,pwm);
-		  __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_1,pwm/2);	 
-		  HAL_Delay(1);   
-		 }
-		 
-		 for(pwm=3749;pwm>=0;pwm--)
-		 {
-		 
-		  __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_2,pwm);
-		  __HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_1,pwm/2); 
-		  HAL_Delay(1);   
-		 }
-  /* USER CODE BEGIN 3 */
+  
+   motor_test(&htim4);
+ 
 
   }
-  /* USER CODE END 3 */
 
 }
 
