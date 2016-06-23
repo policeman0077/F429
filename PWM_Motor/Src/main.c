@@ -35,7 +35,7 @@
 #include "ClockConfig.h"
 #include "Motor.h"
 
-TIM_HandleTypeDef htim4;
+//TIM_HandleTypeDef htim4;
 
 
 int main(void)
@@ -46,12 +46,12 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-  init_motor(&htim4);
+  init_motor();
   
   while (1)
   {
   
-   motor_test(&htim4);
+   motor_test(&motor1);
  
 
   }

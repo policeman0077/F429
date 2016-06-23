@@ -1,19 +1,19 @@
 #include "Motor.h"
 
-//TIM_HandleTypeDef htim4;
+TIM_HandleTypeDef htim4;
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
-void init_motor(TIM_HandleTypeDef *htim4)
+void init_motor(void)
 {
   
 	//TIM_HandleTypeDef htim4;
 	
 	MX_GPIO_Init();
-  MX_TIM4_Init(htim4);
-	HAL_TIM_Base_Start(htim4);
-	HAL_TIM_PWM_Start(htim4, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(htim4, TIM_CHANNEL_1);
+  MX_TIM4_Init(&htim4);
+	HAL_TIM_Base_Start(&htim4);
+	HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
 	
 	
 }	
