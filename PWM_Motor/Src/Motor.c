@@ -14,7 +14,7 @@ void init_motor(void)
 	HAL_TIM_Base_Start(&htim4);
 	HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
-	
+	__HAL_TIM_SetCompare(&htim4,TIM_CHANNEL_1,500);
 	
 }	
 
@@ -85,4 +85,37 @@ void motor_test(TIM_HandleTypeDef *htim4)
 		 }
 
 }
+
+void motor_forward(void)
+{
+  
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+}	
+void motor_reverse(void)
+{
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+	
+}	
+void motor_stop(void)
+{
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+}
+void motor_brake(void)
+{
+
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+	
+}
+
+void motor_duty(uint32_t duty_cycle,TIM_HandleTypeDef *htim4)
+{
+   duty_cycle = duty_cycle*3749/100;
+	 __HAL_TIM_SetCompare(htim4,TIM_CHANNEL_2,duty_cycle);
+   
+}	
+
 

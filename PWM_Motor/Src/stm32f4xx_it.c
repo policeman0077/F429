@@ -161,16 +161,21 @@ void SysTick_Handler(void)
 /* please refer to the startup file (startup_stm32f4xx.s).                    */
 /******************************************************************************/
 extern int motor_status;
- 
+uint32_t current_tick=0;
+uint32_t tickDiff=0; 
 /**
 * @brief For PC13 which it the push button on eva board //sam This function handles EXTI line[15:10] interrupts.
 */
 void EXTI15_10_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI15_10_IRQn 0 */
-  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+  // 
+	//if(HAL_GetTick()-current_tick>1) //debounce push button //sam
+ //{
 	motor_status = 5;
   /* USER CODE END EXTI15_10_IRQn 0 */
+	//}	
+	//current_tick = HAL_GetTick(); 
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_13);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
 
