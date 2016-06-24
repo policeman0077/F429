@@ -35,8 +35,14 @@
 #include "ClockConfig.h"
 #include "Motor.h"
 
-//TIM_HandleTypeDef htim4;
 
+ int motor_status = 0 ;
+ int motor_pre_st = 0 ;
+#define forward 1
+#define reverse 2
+#define stop    3
+#define brake   4
+#define button_pushed 5
 
 int main(void)
 {
@@ -51,8 +57,42 @@ int main(void)
   while (1)
   {
   
-   motor_test(&motor1);
- 
+   //motor_test(&motor1);
+    switch(motor_status)
+		 {
+			 case forward:
+				     
+			      motor_pre_st = forward;
+			      break;
+			 
+			 case reverse:
+			      
+			      motor_pre_st = reverse;
+			      break;
+			 
+       case stop:
+				 
+            motor_pre_st = stop;
+			      break;
+			 
+       case brake:
+				 
+            motor_pre_st = brake;
+			      break;
+			 
+       case button_pushed:			 
+		 
+		        motor_pre_st += 1;
+			      if(motor_pre_st>4)
+						{
+						  
+							motor_pre_st = 1;
+						 
+						}	
+						
+						motor_status = motor_pre_st;
+		        break;
+		 }	 
 
   }
 

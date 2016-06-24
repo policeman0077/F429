@@ -1,5 +1,5 @@
 #include "Motor.h"
-
+#include "GPIO.h"
 TIM_HandleTypeDef htim4;
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
@@ -56,15 +56,15 @@ void MX_TIM4_Init(TIM_HandleTypeDef *htim4)
         * EVENT_OUT
         * EXTI
 */
-void MX_GPIO_Init(void)
-{
+//void MX_GPIO_Init(void)
+//{
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
+//  /* GPIO Ports Clock Enable */
+//  __HAL_RCC_GPIOH_CLK_ENABLE();
+//  __HAL_RCC_GPIOD_CLK_ENABLE();
+//  __HAL_RCC_GPIOB_CLK_ENABLE();
 
-}
+//}
 void motor_test(TIM_HandleTypeDef *htim4)
 {
       int pwm =0;
