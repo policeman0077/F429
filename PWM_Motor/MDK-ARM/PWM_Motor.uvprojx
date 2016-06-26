@@ -334,7 +334,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F439xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Include;../Drivers/CMSIS/Device/ST/STM32F4xx/Include</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Include;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../MDK-ARM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -531,6 +531,21 @@
               <FileName>GPIO.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Src\GPIO.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>New Group</GroupName>
+          <Files>
+            <File>
+              <FileName>foo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\foo.c</FilePath>
+            </File>
+            <File>
+              <FileName>foo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\foo.h</FilePath>
             </File>
           </Files>
         </Group>

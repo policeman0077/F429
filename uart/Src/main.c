@@ -32,13 +32,14 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "uart.h"
 #include <stdio.h>
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef huart3;
+
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -48,33 +49,18 @@ UART_HandleTypeDef huart3;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART3_UART_Init(void);
 
+int i;
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
-#ifdef __GNUC__
-  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
-     set to 'Yes') calls __io_putchar() */
-  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif /* __GNUC__ */
- 
+
 /**
   * @brief  Retargets the C library printf function to the USART.
   * @param  None
   * @retval None
   */
-PUTCHAR_PROTOTYPE
-{
-	/* Place your implementation of fputc here */
-	/* e.g. write a character to the USART */
-	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 100);
-	
-	
-	return ch;
-}
+
 
 /* USER CODE END PFP */
 
@@ -100,6 +86,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
+	MX_USART2_UART_Init();
 	printf("aaaaa");
   /* USER CODE BEGIN 2 */
 
@@ -110,7 +97,8 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-
+  HAL_Delay(500);
+	printf("hello %d\r\n",i++);
   /* USER CODE BEGIN 3 */
 
   }
@@ -160,20 +148,7 @@ void SystemClock_Config(void)
 }
 
 /* USART3 init function */
-void MX_USART3_UART_Init(void)
-{
 
-  huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
-  huart3.Init.WordLength = UART_WORDLENGTH_8B;
-  huart3.Init.StopBits = UART_STOPBITS_1;
-  huart3.Init.Parity = UART_PARITY_NONE;
-  huart3.Init.Mode = UART_MODE_TX_RX;
-  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-  HAL_UART_Init(&huart3);
-
-}
 
 /** Configure pins as 
         * Analog 

@@ -3,6 +3,7 @@
 "uart\stm32f4xx_it.o"
 "uart\main.o"
 "uart\stm32f4xx_hal_msp.o"
+"uart\uart.o"
 "uart\startup_stm32f429xx.o"
 "uart\stm32f4xx_hal_pwr_ex.o"
 "uart\stm32f4xx_hal_gpio.o"

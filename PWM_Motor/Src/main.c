@@ -34,7 +34,8 @@
 #include "stm32f4xx_hal.h"
 #include "ClockConfig.h"
 #include "Motor.h"
-
+#include "stdio.h"
+#include "foo.h"
 
  int motor_status = 0 ;
  int motor_pre_st = 0 ;
@@ -47,7 +48,7 @@
 int main(void)
 {
 
-
+  //printf("aaaa");
   HAL_Init();
 
   /* Configure the system clock */

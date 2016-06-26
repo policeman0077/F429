@@ -21,6 +21,7 @@
 "pwm_motor\clockconfig.o"
 "pwm_motor\motor.o"
 "pwm_motor\gpio.o"
+"pwm_motor\foo.o"
 --library_type=microlib --strict --scatter "PWM_Motor\PWM_Motor.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

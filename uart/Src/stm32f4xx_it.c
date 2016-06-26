@@ -41,7 +41,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern UART_HandleTypeDef huart3;
-
+extern UART_HandleTypeDef huart2;
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -176,7 +176,13 @@ void USART3_IRQHandler(void)
   /* USER CODE END USART3_IRQn 1 */
 }
 
-/* USER CODE BEGIN 1 */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
 
-/* USER CODE END 1 */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+  /* USER CODE END USART3_IRQn 0 */
+  //HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+  /* USER CODE END USART3_IRQn 1 */
+}
