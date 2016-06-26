@@ -65,24 +65,28 @@ int main(void)
 			 case forward:
             motor_forward();
 			      motor_pre_st = forward;
+			      motor_status = 0;
 			      printf("forward\r\n");
 			      break;
 			 
 			 case reverse:
 			      motor_reverse();
 			      motor_pre_st = reverse;
+			      motor_status = 0;
 			      printf("reverse\r\n");
 			      break;
 			 
        case stop:
 				    motor_stop();
             motor_pre_st = stop;
+			      motor_status = 0;
 			      printf("stop\r\n");
 			      break;
 			 
        case brake:
 				    motor_brake();
             motor_pre_st = brake;
+			      motor_status = 0;
 			      printf("brake\r\n");
 			      break;
 			 
@@ -99,6 +103,7 @@ int main(void)
 							}	
 						
 						  motor_status = motor_pre_st;
+							//motor_status = 0;
 						
 		        break;
 		 }	 
