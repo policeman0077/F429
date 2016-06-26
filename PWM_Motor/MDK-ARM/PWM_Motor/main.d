@@ -29,6 +29,7 @@ pwm_motor\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 pwm_motor\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 pwm_motor\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 pwm_motor\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+pwm_motor\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 pwm_motor\main.o: ../Src/ClockConfig.h
 pwm_motor\main.o: ../Src/Motor.h
-pwm_motor\main.o: ../MDK-ARM/foo.h
+pwm_motor\main.o: ../Src/uart.h

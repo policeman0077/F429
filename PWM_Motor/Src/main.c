@@ -35,7 +35,7 @@
 #include "ClockConfig.h"
 #include "Motor.h"
 #include "stdio.h"
-#include "foo.h"
+#include "uart.h"
 
  int motor_status = 0 ;
  int motor_pre_st = 0 ;
@@ -54,6 +54,7 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
   init_motor();
+	MX_USART2_UART_Init();
   //motor_duty(10,&motor1);
   while (1)
   {
@@ -64,21 +65,25 @@ int main(void)
 			 case forward:
             motor_forward();
 			      motor_pre_st = forward;
+			      printf("forward\r\n");
 			      break;
 			 
 			 case reverse:
 			      motor_reverse();
 			      motor_pre_st = reverse;
+			      printf("reverse\r\n");
 			      break;
 			 
        case stop:
 				    motor_stop();
             motor_pre_st = stop;
+			      printf("stop\r\n");
 			      break;
 			 
        case brake:
 				    motor_brake();
             motor_pre_st = brake;
+			      printf("brake\r\n");
 			      break;
 			 
        case button_pushed:			 
