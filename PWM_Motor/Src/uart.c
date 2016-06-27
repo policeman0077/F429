@@ -2,19 +2,8 @@
 
 UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart2;
-
-PUTCHAR_PROTOTYPE
-{
-	/* Place your implementation of fputc here */
-	/* e.g. write a character to the USART */
-	#if uart3_debug
-	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 100);
-	#endif
-	#if uart2_debug
-	HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 100);
-	#endif
-	return ch;
-}
+FILE __stdout;
+FILE __stdin;
 
 void MX_USART3_UART_Init(void)
 {
@@ -44,4 +33,30 @@ void MX_USART2_UART_Init(void)
   HAL_UART_Init(&huart2);
 
 }
+
+
+    
+   int fputc(int ch, FILE *f) 
+	{
+				#if uart2_debug
+	      HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 100);
+	      #endif
+		
+		    #if uart3_debug
+				HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 100);
+				#endif
+		
+		    #if jlink_debug
+		    if (DEMCR & TRCENA) {
+					while (ITM_Port32(0) == 0);
+					ITM_Port8(0) = ch;
+				}
+				#endif
+				
+				return(ch);
+   }  
+
+
+
+
 

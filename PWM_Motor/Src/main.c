@@ -45,6 +45,10 @@
 #define brake   2
 #define button_pushed 5
 
+
+
+
+
 int main(void)
 {
 
@@ -55,6 +59,7 @@ int main(void)
   SystemClock_Config();
   init_motor();
 	MX_USART2_UART_Init();
+	MX_USART3_UART_Init();
   //motor_duty(10,&motor1);
   while (1)
   {
